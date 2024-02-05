@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div>
+    <img src="{% static 'images/banner.jpg' %}"  height="600px" width="1520px">
+</div>
+<div class="container-fluid mt-3" style="margin-bottom:100px;">
+    <h3 class="text-center fw-bold">Our Collections</h3>
+    <p style="text-align:justify; line-height:2;">
+        E commerce is the process of buying and selling goods and services online. It has become increasingly popular in recent years, as it offers a convenient and efficient way to shop. There are many advantages to using e commerce, including the ability to compare prices, access a wider range of products, and enjoy greater convenience. It is also typically faster and more convenient than traditional shopping methods.
+
+    </p>
+</div>
+
+<div class="container-fluid" style="margin-bottom:100px;">
+    <div class="row">
+
+        {% for i in c %}
+
+        <div class="col-sm-4">
+            <div class="card" style="width: 18rem;">
+              <img src="{{i.image.url}}" height="200px" width="100%" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title text-center">{{i.name}}</h5>
+                <a href="{% url 'shop:allprod' i.name %}" class="btn btn-primary" style="position:relative; left:35%;">Products</a>
+              </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

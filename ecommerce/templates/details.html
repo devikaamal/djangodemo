@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-5 p-3">
+            <img src="{{p.image.url}}" height="300px" width="300px">
+
+        </div>
+
+        <div class="col-sm-7 p-1">
+            <h3>{{p.name}}<br></h3>
+            <p class="lh-base" style="text-align:justify;">{{p.desc}}<br><br></p>
+            <b>{{p.price}}<br></b>
+            {{p.stock}}<br>
+
+
+            {% if user.is_superuser == True %}
+            {% if p.stock == 0 %}
+            <h2>Out of stock</h2>
+            <a href="{% url 'admin:index' %}" class="btn btn-danger mt-5 ">ADD STOCK</a>
+            {% else %}
+            <h2>Product in stock</h2>
+            <a href="{% url 'admin:index' %}" class="btn btn-danger mt-5 ">ADD STOCK</a>
+            {% endif %}
+
+
+            {% else %}
+            {% if p.stock == 0 %}
+            <h2>Out of stock</h2>
+            {% else %}
+            <a href="{% url 'cart:addtocart' p.name %}" class="btn btn-danger" >Add to Cart</a>
+            {% endif %}
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

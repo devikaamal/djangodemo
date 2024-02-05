@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<center>
+    <br>
+    <br>
+    <h3>
+        {{msg}}
+    </h3>
+    <br>
+    <br>
+
+    <h4 class="text-danger"> Thank You....</h4>
+    <br>
+    <br>
+    <h4>
+        <a href="{% url 'shop:allcat' %}">Continue Shopping</a>
+    </h4>
+
+
+</center>
+
+
+{% endblock %}
